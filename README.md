@@ -21,3 +21,6 @@
  6. CLI для импорта данных: команда *sail artisan:import:ExchRates* либо *php artisan:import:ExchRates*. При этом происходит импорт данных в БД.
  7. Страница вывода курсов валют за последнюю неделю: корневой URL: http://localhost/ 
  8. API для экспорта данных в JSON формате: http://localhost/api/exchanges 
+ 9. Актуальную версию проекта можно посмотреть по адресу :
+    http://echange-rates.laravel-sail.site:8080  -страница курсов валют(актуальных)  за неделю ;
+    http://echange-rates.laravel-sail.site:8080/api/exchanges - вывод в формате JSON динамики курса валют(актуальных)  за неделю ;
