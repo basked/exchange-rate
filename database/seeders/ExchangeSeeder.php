@@ -26,11 +26,12 @@ class ExchangeSeeder extends Seeder
     public function run()
     {
         DB::table('exchanges')->delete();
-        $now = Carbon::now();
         // Begin date
-        $weekStartDate = $now->startOfWeek()->format('m/d/Y');
+//        $weekStartDate = $now->startOfWeek()->format('m/d/Y');
         // End date
-        $weekEndDate = $now->endOfWeek()->format('m/d/Y');
+//       $weekEndDate = $now->endOfWeek()->format('m/d/Y');
+        $weekStartDate = Carbon::now()->subDays(6)->format('m/d/Y');
+        $weekEndDate = Carbon::now()->format('m/d/Y');
         $currencies = DB::table('currencies')->get(['id', 'CurrId']);
         foreach ($currencies as $currency) {
             $xml = $this->getXml($currency->CurrId, $weekStartDate, $weekEndDate);

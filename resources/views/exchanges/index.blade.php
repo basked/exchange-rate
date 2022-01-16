@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container-fluid">
+    <div class="container-fluid-center">
         <div class="fade-in">
             <div class="row align-items-center">
                 <div class="col-12 d-flex flex-column flex-lg-row flex-wrap">
@@ -21,7 +21,7 @@
                                 <tbody>
                                 @foreach($currencies as $currency)
                                     <tr>
-                                        @if($currency->exchanges->count()>0)
+                                        @if(sizeof( $currency->exchanges)>0)
                                             <td>{{$currency->Name}} </td>
                                             @foreach($currency->exchanges as $exchange)
                                                 <td>{{$exchange->Rate}}</td>
