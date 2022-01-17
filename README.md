@@ -24,3 +24,7 @@
  9. Актуальную версию проекта можно посмотреть по адресу :
     http://echange-rates.laravel-sail.site:8080  -страница курсов валют(актуальных)  за неделю ;
     http://echange-rates.laravel-sail.site:8080/api/exchanges - вывод в формате JSON динамики курса валют(актуальных)  за неделю ;
+ 10. Примеры:
+     https://github.com/basked/exchange-rate/blob/master/exchange_rate.jpg
+     https://github.com/basked/exchange-rate/blob/master/exchange_rate_redis.jpg
+     https://github.com/basked/exchange-rate/blob/master/exchange-rate-api-exchanges.json
