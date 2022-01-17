@@ -15,16 +15,16 @@ class ExchangerController extends Controller
 
     public function __construct()
     {
-        $connection = Redis::connection();
-        $this->redis = $connection->client();
+        $this->redis =  Redis::connection()->client();
     }
 
     public function index()
-    {  // Даты для отображения в шапке таблицы
-        $exchDates = Exchange::get('DateExch')->unique('DateExch')->sortBy('DateExch');
+    {
+        // Даты для отображения в шапке таблицы
+        $date_exchanges = Exchange::get('DateExch')->unique('DateExch')->sortBy('DateExch');
         // Данные по валютам
         $currencies = Currency::with('exchanges')->get()->sortBy('Name')->sortBy('DateExch');
-        return view('exchanges.index', ['currencies' => $currencies, 'exchDates' => $exchDates]);
+        return view('exchanges.index', ['currencies' => $currencies, 'exchDates' => $date_exchanges ]);
     }
 
     public function redis()
@@ -34,18 +34,17 @@ class ExchangerController extends Controller
 //        $this->redis->del('currencies');
 
         // Даты для отображения в шапке таблицы
-        $exchDates = json_decode($this->redis->get('exchDates'));
-        if ($exchDates === null) {
-            $exchDates = Exchange::get('DateExch')->unique('DateExch')->sortBy('DateExch');
-            $this->redis->set('exchDates', $exchDates);
+        $date_exchanges  = json_decode($this->redis->get('exchDates'));
+        if ( $date_exchanges  === null) {
+            $date_exchanges  = Exchange::get('DateExch')->unique('DateExch')->sortBy('DateExch');
+            $this->redis->set('exchDates',  $date_exchanges );
         };
 
-        $exchDates = Exchange::get('DateExch')->unique('DateExch')->sortBy('DateExch');
         $currencies = json_decode($this->redis->get('currencies'));
         if ($currencies === null) {
             $currencies = Currency::with('exchanges')->get()->sortBy('Name')->sortBy('DateExch');
             $this->redis->set('currencies', $currencies);
         };
-        return view('exchanges.index', ['currencies' => $currencies, 'exchDates' => $exchDates]);
+        return view('exchanges.index', ['currencies' => $currencies, 'exchDates' => $date_exchanges ]);
     }
 }
