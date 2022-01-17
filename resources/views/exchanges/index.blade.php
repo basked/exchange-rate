@@ -6,7 +6,8 @@
                 <div class="col-12 d-flex flex-column flex-lg-row flex-wrap">
                     <div class="card">
                         <div class="card-header">
-                            Курсы валют с {{$exchDates->min()->DateExch}} по {{$exchDates->max()->DateExch }}
+                            Курсы валют с
+{{--                            {{$exchDates->min()->DateExch}} по {{$exchDates->max()->DateExch }}--}}
                         </div>
                         <div class="card-body">
                             <table class="table-bordered">
